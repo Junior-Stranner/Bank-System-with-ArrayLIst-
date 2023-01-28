@@ -20,6 +20,7 @@ public class Principal {
 					+ "\n 3 - Depositar"
 					+ "\n 4 - Sacar"
 					+ "\n 5 - Status da Conta"
+					+ "\n 6 - Excluir Conta"
 					+ "\n 9 - finalizar Sistema");
 			op = Integer.parseInt(in.nextLine());
 			switch(op){
@@ -29,9 +30,31 @@ public class Principal {
 			case 3:depositarConta(conta);break;
 			case 4:sacarDinheiro(conta);break;
 			case 5:statusMinhaConta(conta);break;
+			case 6:excluirConta(conta);break;
 			case 9:System.out.println(" Finalizar Sistema");
 			}
 		}while(op!= 9);
+	}
+
+	private static void excluirConta(ArrayList<Conta> conta) {
+		
+		System.out.println(" Digite o Numero da Conta");
+		int numero = Integer.parseInt(in.nextLine());
+		
+		for (Conta c : conta) {
+			
+			System.out.println(" \n Numero da Conta : "+c.getNumero()
+			+ "\n  Nome : "+c.getNome()
+			+ "\n  tipo de Conta : "+c.getTipoConta()
+			+ "\n  Saldo : "+c.getSaldo());
+		
+			conta.remove(c);
+			
+			System.out.println("\n=================Conta Excluida===============\n!!");
+			
+		}
+		
+		
 	}
 
 	private static void statusMinhaConta(ArrayList <Conta> conta) {
@@ -48,9 +71,11 @@ public class Principal {
 				c.setStatus(true);
 			}else {
 				c.setStatus(false);
+
 			}
 			
 			System.out.println(c.isStatus()+","+" Conta Existente do Cliente  : "+c.getNome());
+
 		}
 			
 	}
